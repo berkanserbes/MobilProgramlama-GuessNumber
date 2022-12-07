@@ -11,7 +11,7 @@ export default function App() {
 
   const [userNumber, setUserNumber] = useState();
   const [gameIsOver, setGameIsOver] = useState(true);
-
+  
   function pickedNumberHandler(pickedNumber) {
     setUserNumber(pickedNumber);
     setGameIsOver(false);
@@ -24,13 +24,14 @@ export default function App() {
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />
 
   if(userNumber) {
-    screen = <GameScreen userNumber={userNumber} onGameOver={gameOverHandler}/>
+    screen = (
+      <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />
+    );
   }
 
   if(gameIsOver && userNumber) {
-    screen = <GameOverScreen/>
+    screen = <GameOverScreen />;
   }
-
 
   return (
     <LinearGradient colors={[Colors.primary700, Colors.accent500]} style={styles.rootScreen}>
